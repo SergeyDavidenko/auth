@@ -15,8 +15,8 @@ func AuthCheck(url, token string) (bool error) {
 	if url == "" {
 		return false, fmt.Errorf("auth url not set")
 	}
-	var tokenJSON tokenValidator
-	tokenJSON.token = token
+	var tokenJSON TokenValidator
+	tokenJSON.Token = token
 	jsonStr, errMarshal := json.Marshal(tokenJSON)
 	if errMarshal != nil {
 		return false, fmt.Errorf("cannot json marshal struct")
@@ -37,6 +37,7 @@ func AuthCheck(url, token string) (bool error) {
 	return true, nil
 }
 
-type tokenValidator struct {
-	token string `json:"token"`
+// TokenValidator ...
+type TokenValidator struct {
+	Token string `json:"token"`
 }
