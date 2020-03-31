@@ -31,7 +31,7 @@ func AuthCheck(url string, token string) (bool, error) {
 	}
 	defer resp.Body.Close()
 
-	if resp.Status != "200" {
+	if resp.StatusCode != 200 {
 		return false, fmt.Errorf("status conde not qe 200")
 	}
 	return true, nil
